@@ -47,7 +47,7 @@ int main() {
 					population[i].is_working = 0;
 					population[i].unemployed_year = year;
 				}
-				if (year <31 && losejob_num <losejobperYear()){
+				if (year <= AI_COMING_YEAR && losejob_num <losejobperYear()){
 					population[i].is_working = 0;
 					population[i].unemployed_year = year;
 					losejob_num++;
@@ -55,7 +55,7 @@ int main() {
 			}
 			else {
 				if ((year - population[i].unemployed_year >= 30 && population[i].unemployed_year != -1 && population[i].age< 70)
-					||((year - population[i].unemployed_year >= 40) && (rand() / (double)RAND_MAX < 0.5) ? 1 : 0)
+					||(population[i].age >= 40) && (rand() / (double)RAND_MAX < 0.5) ? 1 : 0 && population[i].unemployed_year == -1
 					|| population[i].age >= 95){
 					// Remove deceased
 					if (population[i].unemployed_year == -1)
